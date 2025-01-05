@@ -1,0 +1,2 @@
+import e from"react";var t=function(t){var r=t.columns,n=t.rows,a=t.className,l=void 0===a?"responsive-table":a;return e.createElement("table",{className:l},e.createElement("thead",null,e.createElement("tr",null,r.map((function(t,r){return e.createElement("th",{key:r},t)})))),e.createElement("tbody",null,n.map((function(t,r){return e.createElement("tr",{key:r},t.map((function(t,r){return e.createElement("td",{key:r},t)})))}))))};export{t as Table};
+//# sourceMappingURL=index.esm.js.map

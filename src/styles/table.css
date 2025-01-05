@@ -1,0 +1,22 @@
+.responsive-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  margin: 20px 0;
+}
+
+.responsive-table th, .responsive-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.responsive-table th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .responsive-table {
+      font-size: 14px;
+  }
+}
