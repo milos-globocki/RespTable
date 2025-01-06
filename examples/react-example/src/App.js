@@ -2,6 +2,7 @@ import React from 'react';
 import { Table } from '../src/compiled-files-here/index.esm';
 // import '../src/compiled-files-here/index.cjs';
 import '../src/workaround/stacking.css';
+import '../src/workaround/table.css';
 // import '../src/workaround/flipping.js';
 
 function App() {
@@ -91,7 +92,7 @@ function App() {
   return (
     <div>
       <h1>React Example: Responsive Table Library</h1>
-      <Table columns={colsExampleTable} rows={firstFourRows} className={"responsive-table"}/>
+      <Table columns={colsExampleTable} rows={firstFourRows}/>
       {/* <Table columns={colsExampleTable} rows={firstFourRows} className={"flipping"}/> */}
     </div>
   );
