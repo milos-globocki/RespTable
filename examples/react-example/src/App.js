@@ -30,7 +30,7 @@ function CSVTable() {
     <div>
       <h2>React Example: Responsive Table Library</h2>
       {tableData.length > 0 ? (
-        <table border="1">
+        <table className="responsive-table">
           <thead>
             <tr>
               {headers.map((header, index) => (
