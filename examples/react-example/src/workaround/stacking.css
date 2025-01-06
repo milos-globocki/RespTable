@@ -1,0 +1,90 @@
+/* Base table styles /
+.responsive-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  margin: 20px 0;
+  margin-bottom: 1.25em; / Merged property from second file /
+  margin-left: 0em; / Merged property from second file /
+}
+
+.responsive-table th, 
+.responsive-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.responsive-table th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/ Responsive Stacking Pattern /
+@media (max-width: 600px) {
+  .responsive-table {
+    font-size: 14px;
+  }
+
+  .responsive-table thead {
+    display: none; / Make the header invisible /
+  }
+
+  .responsive-table tbody, 
+  .responsive-table tr, 
+  .responsive-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .responsive-table tr {
+    margin-bottom: 16px;
+  }
+
+  .responsive-table td {
+    text-align: left; / Align cell contents to the left /
+    padding-left: 50%; / Space for labels /
+    position: relative;
+  }
+
+  .responsive-table td::before {
+    content: attr(data-label); / Pull header name /
+    position: absolute;
+    left: 0;
+    width: 45%;
+    padding-left: 8px;
+    text-align: left;
+    font-weight: bold;
+  }
+}
+
+/ Additional List View Styling */
+@media (max-width: 37.5em) {
+  .responsive-table.list-view {
+    display: block;
+    padding: 0;
+  }
+
+  .responsive-table .list-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+    padding: 1em;
+    border: 0.0625em solid #ddd;
+    background-color: #f9f9f9;
+  }
+
+  .responsive-table .list-item span {
+    margin: 0.25em 0;
+    font-weight: bold;
+  }
+}
+
+@media (min-width: 37.5625em) {
+  .responsive-table#lv {
+    display: table;
+  }
+
+  .responsive-table.list-view {
+    display: none;
+  }
+}
