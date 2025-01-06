@@ -1,1 +1,1 @@
-export { Table } from './components/Table.jsx';
+export { Table, FTable } from './components/Table.jsx';

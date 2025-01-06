@@ -1,13 +1,13 @@
 .responsive-table {
-  width: 100%;
+  /* width: 50%; */
   border-collapse: collapse;
-  font-size: 16px;
-  margin: 20px 0;
+  font-size: 1em;
+  margin: 1.25em 0;
 }
 
 .responsive-table th, .responsive-table td {
-  border: 2px solid #051f58;
-  padding: 8px;
+  border: 0.0625em solid #2b2b2b;
+  padding: 0.5em;
 }
 
 .responsive-table th {
@@ -15,8 +15,8 @@
   color: white;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 37.5em) {
   .responsive-table {
-      font-size: 14px;
+      font-size: 0.875;
   }
 }

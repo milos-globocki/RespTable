@@ -1,32 +1,11 @@
-/* Base table styles /
-.responsive-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 16px;
-  margin: 20px 0;
-  margin-bottom: 1.25em; / Merged property from second file /
-  margin-left: 0em; / Merged property from second file /
-}
-
-.responsive-table th, 
-.responsive-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-.responsive-table th {
-  background-color: #4CAF50;
-  color: white;
-}
-
-/ Responsive Stacking Pattern /
-@media (max-width: 600px) {
+/* Responsive Stacking Pattern */
+@media (max-width: 37.5em) {
   .responsive-table {
-    font-size: 14px;
+    font-size: 0.875;
   }
 
   .responsive-table thead {
-    display: none; / Make the header invisible /
+    display: none;
   }
 
   .responsive-table tbody, 
@@ -37,27 +16,35 @@
   }
 
   .responsive-table tr {
-    margin-bottom: 16px;
+    margin-bottom: 1em;
   }
 
   .responsive-table td {
-    text-align: left; / Align cell contents to the left /
-    padding-left: 50%; / Space for labels /
+    text-align: left;
+    padding-left: 50%;
     position: relative;
   }
 
   .responsive-table td::before {
-    content: attr(data-label); / Pull header name /
+    content: attr(data-label);
     position: absolute;
     left: 0;
     width: 45%;
-    padding-left: 8px;
+    padding-left: 0.5em;
     text-align: left;
     font-weight: bold;
   }
+
+  /* Highlight the first cell in each row */
+  .responsive-table td:first-of-type {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    border-left: 0.0625em solid #2b2b2b;
+  }
 }
 
-/ Additional List View Styling */
+/* Additional List View Styling */
 @media (max-width: 37.5em) {
   .responsive-table.list-view {
     display: block;
