@@ -35,7 +35,6 @@
     font-weight: bold;
   }
 
-  /* Highlight the first cell in each row */
   .responsive-table td:first-of-type {
     background-color: #4CAF50;
     color: white;
