@@ -10,6 +10,7 @@ package-lock.json
 # production
 /build
 /dist
+/examples/react-example/src/compiled-files-here/*
 
 # misc
 .DS_Store
