@@ -1,5 +1,11 @@
-import React, {useState, useEffect } from 'react';
-import { LoadCSV, CreateTable, ApplyStacking, RenderTable, ApplyFlipping } from '../src/compiled-files-here/index.esm';
+import React, { useState, useEffect } from 'react';
+import {
+  LoadCSV,
+  CreateTable,
+  ApplyStacking,
+  RenderTable,
+  ApplyFlipping,
+} from '../src/compiled-files-here/index.esm';
 import './compiled-files-here/index.esm.css';
 
 // Stacking Example:
@@ -28,7 +34,7 @@ import './compiled-files-here/index.esm.css';
 
 // Flipping Example:
 const App = () => {
-  const [isFlipped, setIsFlipped] = useState(false); 
+  const [isFlipped, setIsFlipped] = useState(false);
   const [csvData, setCsvData] = useState([]);
 
   useEffect(() => {
@@ -44,12 +50,12 @@ const App = () => {
   }, []);
 
   const handleFlip = () => {
-    setIsFlipped((prev) => !prev);
     const table = ApplyFlipping(csvData, !isFlipped);
     if (table) {
+      setIsFlipped((prev) => !prev);
       RenderTable(table);
     } else {
-      console.error("Failed to render flipped table.");
+      console.error('Failed to render flipped table.');
     }
   };
 

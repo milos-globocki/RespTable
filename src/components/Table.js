@@ -1,12 +1,12 @@
 import '../styles/table.css';
-import '../styles/stacking.css'
+import '../styles/stacking.css';
 import { csvParse } from 'd3-dsv';
 
 export const LoadCSV = async (csvFilePath) => {
   const response = await fetch(csvFilePath);
   const csvText = await response.text();
   const parsedData = csvParse(csvText);
-  return parsedData; 
+  return parsedData;
 };
 
 export const CreateTable = (data) => {
@@ -40,27 +40,28 @@ export const CreateTable = (data) => {
 };
 
 export const ApplyStacking = (table) => {
-  table.classList.add('stacking');  
+  table.classList.add('stacking');
 };
 
 export const ApplyFlipping = (data, isFlipped) => {
   if (!data || data.length === 0) return null;
   const columns = Object.keys(data[0]);
-  const rows = data;
 
-  let flippedRows;
+  let flippedData;
   if (isFlipped) {
-    flippedRows = columns.map((col, index) => [col, ...rows.map(row => row[col])]);
+    flippedData = columns.map((col) => [col, ...data.map((row) => row[col])]);
   } else {
-    flippedRows = rows.map((row) => columns.map((col) => row[col]));
+    flippedData = data.map((row) => columns.map((col) => row[col]));
   }
+
   const table = document.createElement('table');
   table.classList.add('responsive-table');
 
   const thead = document.createElement('thead');
   const headerRow = document.createElement('tr');
+
   if (isFlipped) {
-    flippedRows[0].forEach((header) => {
+    flippedData[0].forEach((header) => {
       const th = document.createElement('th');
       th.textContent = header;
       headerRow.appendChild(th);
@@ -72,17 +73,18 @@ export const ApplyFlipping = (data, isFlipped) => {
       headerRow.appendChild(th);
     });
   }
+
   thead.appendChild(headerRow);
   table.appendChild(thead);
 
   const tbody = document.createElement('tbody');
-  const rowData = isFlipped ? flippedRows.slice(1) : rows;
-  console.log(rowData);
-  console.log("Here");
+  const rowData = isFlipped
+    ? flippedData.slice(1)
+    : data.map((row) => columns.map((col) => row[col]));
+
   rowData.forEach((row) => {
     const tr = document.createElement('tr');
     row.forEach((cell) => {
-      
       const td = document.createElement('td');
       td.textContent = cell;
       tr.appendChild(td);
