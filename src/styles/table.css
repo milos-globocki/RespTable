@@ -8,11 +8,13 @@
 .responsive-table th, .responsive-table td {
   border: 0.0625em solid #2b2b2b;
   padding: 0.5em;
+  background-color: #EAF1F5;
 }
 
 .responsive-table th {
-  background-color: #4CAF50;
-  color: white;
+  background-color: #89B2C7;
+  color: black;
+  
 }
 
 @media (max-width: 37.5em) {
