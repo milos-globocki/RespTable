@@ -1,1 +1,1 @@
-export { LoadCSV, CreateTable, ApplyStacking, RenderTable } from './components/Table.js';
+export { LoadCSV, CreateTable, ApplyStacking, RenderTable, ApplyFlipping } from './components/Table.js';
