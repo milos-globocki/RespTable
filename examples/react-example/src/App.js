@@ -1,11 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import {
-  LoadCSV,
-  CreateTable,
-  ApplyStacking,
-  RenderTable,
-  ApplyFlipping,
-} from '../src/compiled-files-here/index.esm';
+import React, {useState, useEffect } from 'react';
+import { LoadCSV, CreateTable, ApplyStacking, RenderTable, ApplyFlipping } from '../src/compiled-files-here/index.esm';
 import './compiled-files-here/index.esm.css';
 
 // Stacking Example:
@@ -13,12 +7,8 @@ import './compiled-files-here/index.esm.css';
   useEffect(() => {
     const initializeTable = async () => {
       const csvData = await LoadCSV('/cereals.csv');
-      
-      const table = CreateTable(csvData);
-      
-
-      ApplyStacking(table);
-      RenderTable(table);
+      CreateTable(csvData);
+      ApplyStacking();
     };
 
     initializeTable();
@@ -30,40 +20,33 @@ import './compiled-files-here/index.esm.css';
       <div id="table-container"></div>
     </div>
   );
-}; */
+};  */
 
 // Flipping Example:
 const App = () => {
-  const [isFlipped, setIsFlipped] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(false); 
   const [csvData, setCsvData] = useState([]);
 
   useEffect(() => {
     const initializeTable = async () => {
       const data = await LoadCSV('/cereals.csv');
       setCsvData(data);
-      const table = CreateTable(data);
-      ApplyStacking(table);
-      RenderTable(table);
+      CreateTable(data);
     };
 
     initializeTable();
   }, []);
 
   const handleFlip = () => {
-    const table = ApplyFlipping(csvData, !isFlipped);
-    if (table) {
-      setIsFlipped((prev) => !prev);
-      RenderTable(table);
-    } else {
-      console.error('Failed to render flipped table.');
-    }
+    setIsFlipped((prev) => !prev);
+    ApplyFlipping(csvData, !isFlipped);
   };
 
   return (
     <div>
       <h1>RespTable: Showcase</h1>
-      <button onClick={handleFlip}>Flip Table</button> {/* Button to toggle flipping */}
-      <div id="table-container"></div>
+      <button onClick={handleFlip}>Flip Table</button> {}
+       <div id="table-container"></div>
     </div>
   );
 };

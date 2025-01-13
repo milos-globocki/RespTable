@@ -36,11 +36,17 @@ export const CreateTable = (data) => {
   });
 
   table.appendChild(tbody);
-  return table;
+  RenderTable(table);
 };
 
-export const ApplyStacking = (table) => {
+const getLastRenderedTable = () => {
+  return document.querySelector('#table-container table');
+};
+
+export const ApplyStacking = () => {
+  const table = getLastRenderedTable();
   table.classList.add('stacking');
+  RenderTable(table);
 };
 
 export const ApplyFlipping = (data, isFlipped) => {
@@ -93,7 +99,7 @@ export const ApplyFlipping = (data, isFlipped) => {
   });
 
   table.appendChild(tbody);
-  return table;
+  RenderTable(table);
 };
 
 export const RenderTable = (table) => {
