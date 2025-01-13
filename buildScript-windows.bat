@@ -1,10 +1,11 @@
 @echo off
 
-npm install
-npm run build
-xcopy dist\* examples\react-example\src\compiled-files-here \E \I \Y
-cd examples\react-example\src\
-npm install
-npm start
+CALL npm install
+CALL npm run build
+CALL xcopy dist\* examples\react-example\src\compiled-files-here /E /I /Y
+CALL cd examples\react-example\src\
+CALL npm install
+CALL npm start
+CALL cd ..\..\..
 
 pause
