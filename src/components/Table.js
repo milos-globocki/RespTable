@@ -46,5 +46,6 @@ export const ApplyStacking = (table) => {
 };
 
 export const RenderTable = (table) => {
+  document.getElementById('table-container').innerHTML = '';
   document.getElementById('table-container').appendChild(table);
 };
