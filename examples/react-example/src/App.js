@@ -24,5 +24,6 @@ const App = () => {
       <div id="table-container"></div>
     </div>
   );
+  
 };
 export default App;
