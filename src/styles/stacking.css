@@ -1,31 +1,30 @@
-/* Responsive Stacking Pattern */
 @media (max-width: 37.5em) {
-  .responsive-table {
+  .stacking {
     font-size: 0.875;
   }
 
-  .responsive-table thead {
+  .stacking thead {
     display: none;
   }
 
-  .responsive-table tbody, 
-  .responsive-table tr, 
-  .responsive-table td {
+  .stacking tbody, 
+  .stacking tr, 
+  .stacking td {
     display: block;
     width: 100%;
   }
 
-  .responsive-table tr {
+  .stacking tr {
     margin-bottom: 1em;
   }
 
-  .responsive-table td {
+  .stacking td {
     text-align: left;
     padding-left: 50%;
     position: relative;
   }
 
-  .responsive-table td::before {
+  .stacking td::before {
     content: attr(data-label);
     position: absolute;
     left: 0;
@@ -35,7 +34,7 @@
     font-weight: bold;
   }
 
-  .responsive-table td:first-of-type {
+  .stacking td:first-of-type {
     background-color: #4CAF50;
     color: white;
     font-weight: bold;
@@ -43,14 +42,13 @@
   }
 }
 
-/* Additional List View Styling */
 @media (max-width: 37.5em) {
-  .responsive-table.list-view {
+  .stacking.list-view {
     display: block;
     padding: 0;
   }
 
-  .responsive-table .list-item {
+  .stacking .list-item {
     display: flex;
     flex-direction: column;
     margin-bottom: 1em;
@@ -59,18 +57,18 @@
     background-color: #f9f9f9;
   }
 
-  .responsive-table .list-item span {
+  .stacking .list-item span {
     margin: 0.25em 0;
     font-weight: bold;
   }
 }
 
 @media (min-width: 37.5625em) {
-  .responsive-table#lv {
+  .stacking#lv {
     display: table;
   }
 
-  .responsive-table.list-view {
+  .stacking.list-view {
     display: none;
   }
 }
