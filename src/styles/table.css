@@ -11,6 +11,14 @@
   background-color: #EAF1F5;
 }
 
+.responsive-table td {
+  text-align: left;
+}
+
+.responsive-table td.numeric {
+  text-align: right;
+}
+
 .responsive-table th {
   background-color: #89B2C7;
   color: black;
