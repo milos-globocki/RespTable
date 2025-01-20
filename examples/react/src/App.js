@@ -1,5 +1,10 @@
-import React, {useState, useEffect } from 'react';
-import { LoadCSV, CreateTable, ApplyStacking, ApplyFlipping } from '../src/respTable/index.esm';
+import React, { useState, useEffect } from 'react';
+import {
+  LoadCSV,
+  CreateTable,
+  ApplyStacking,
+  ApplyFlipping,
+} from '../src/respTable/index.esm';
 import './respTable/index.esm.css';
 
 // Stacking Example:
@@ -7,7 +12,7 @@ const App = () => {
   useEffect(() => {
     const initializeTable = async () => {
       const csvData = await LoadCSV('/cereals.csv');
-      CreateTable(csvData);
+      CreateTable(csvData, true);
       ApplyStacking();
     };
 
