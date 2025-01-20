@@ -40,6 +40,14 @@ export const CreateTable = (data) => {
     Object.values(row).forEach((cell) => {
       const td = document.createElement('td');
       td.textContent = cell;
+      if (!isNaN(cell) && cell.trim() !== '') 
+      {
+        td.classList.add('numeric');
+      }
+      else
+      {
+        td.classList.add('text');
+      }
       tr.appendChild(td);
     });
     tbody.appendChild(tr);

@@ -1,0 +1,34 @@
+.squishing {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+}
+
+.squishing th,
+.squishing td {
+  white-space: nowrap;
+  padding: 0.5em;
+  border: 0.0625em solid #ddd;
+  text-align: left;
+}
+
+.squishing th {
+  background-color: #f4f4f4;
+}
+
+@media (max-width: 37.5em) {
+  .squishing {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .squishing tr {
+    display: table-row;
+  }
+
+  .squishing td {
+    display: table-cell;
+    width: auto;
+  }
+}
