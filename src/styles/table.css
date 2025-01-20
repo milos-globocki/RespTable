@@ -44,6 +44,9 @@
 
 .responsive-table td {
   background-color: inherit;
+}
+
+.responsive-table td.text {
   text-align: left;
 }
 
