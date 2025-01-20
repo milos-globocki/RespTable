@@ -2,6 +2,8 @@ import '../styles/table.css';
 import '../styles/stacking.css';
 import { csvParse } from 'd3-dsv';
 
+let sortConfig = { key: null, direction: 'ascending' };
+
 export const LoadCSV = async (csvFilePath) => {
   const response = await fetch(csvFilePath);
   const csvText = await response.text();
@@ -9,21 +11,21 @@ export const LoadCSV = async (csvFilePath) => {
   return parsedData;
 };
 
+
 export const CreateTable = (data) => {
   const headers = Object.keys(data[0]);
   const table = document.createElement('table');
   table.classList.add('responsive-table');
-
   const thead = document.createElement('thead');
   const headerRow = document.createElement('tr');
   headers.forEach((header) => {
     const th = document.createElement('th');
     th.textContent = header;
+    th.addEventListener('click', () => handleSort(header, data, table));
     headerRow.appendChild(th);
   });
   thead.appendChild(headerRow);
   table.appendChild(thead);
-
   const tbody = document.createElement('tbody');
   data.forEach((row) => {
     const tr = document.createElement('tr');
@@ -34,11 +36,45 @@ export const CreateTable = (data) => {
     });
     tbody.appendChild(tr);
   });
-
   table.appendChild(tbody);
   RenderTable(table);
 };
 
+const handleSort = (column, data, table) => {
+  const thead = table.querySelector('thead');
+  const headers = thead.querySelectorAll('th');
+
+  headers.forEach((header) => {
+    header.classList.remove('sorted-ascending', 'sorted-descending');
+  });
+
+  if (sortConfig.key === column) {
+    sortConfig.direction = sortConfig.direction === 'ascending' ? 'descending' : 'ascending';
+  } else {
+    sortConfig.key = column;
+    sortConfig.direction = 'ascending';
+  }
+
+  const sortedData = [...data].sort((a, b) => {
+    const aText = a[column];
+    const bText = b[column];
+    if (aText < bText) return sortConfig.direction === 'ascending' ? -1 : 1;
+    if (aText > bText) return sortConfig.direction === 'ascending' ? 1 : -1;
+    return 0;
+  });
+
+  headers.forEach((header) => {
+    if (header.textContent.trim() === column) {
+      if (sortConfig.direction === 'ascending') {
+        header.classList.add('sorted-ascending');
+      } else {
+        header.classList.add('sorted-descending');
+      }
+    }
+  });
+
+  CreateTable(sortedData);
+};
 const getLastRenderedTable = () => {
   return document.querySelector('#table-container table');
 };

@@ -25,6 +25,15 @@
   top: 0;
   z-index: 1;
   border-width: 0.0625em;
+  cursor: pointer;
+}
+
+.responsive-table th.sorted-ascending::after {
+  content: ' ▲';
+}
+
+.responsive-table th.sorted-descending::after {
+  content: ' ▼';
 }
 
 .responsive-table td {

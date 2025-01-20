@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react';
-import { LoadCSV, CreateTable, ApplyStacking, RenderTable, ApplyFlipping } from '../src/respTable/index.esm';
+import { LoadCSV, CreateTable, ApplyStacking, ApplyFlipping } from '../src/respTable/index.esm';
 import './respTable/index.esm.css';
 
 // Stacking Example:
