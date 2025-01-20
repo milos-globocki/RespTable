@@ -1,6 +1,6 @@
 @media (max-width: 37.5em) {
   .stacking {
-    font-size: 0.875;
+    font-size: 0.875em;
   }
 
   .stacking thead {
@@ -22,6 +22,7 @@
     text-align: left;
     padding-left: 50%;
     position: relative;
+    white-space: nowrap;
   }
 
   .stacking td::before {
@@ -32,7 +33,6 @@
     padding-left: 0.5em;
     text-align: left;
     font-weight: bold;
-    background-color: #89B2C7;
     color: black;
     border-left: 0.0625em solid #2b2b2b;
   }
@@ -44,33 +44,12 @@
   }
 }
 
-@media (max-width: 37.5em) {
-  .stacking.list-view {
-    display: block;
-    padding: 0;
-  }
-
-  .stacking .list-item {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1em;
-    padding: 1em;
-    border: 0.0625em solid #ddd;
-    background-color: #EAF1F5;
-  }
-
-  .stacking .list-item span {
-    margin: 0.25em 0;
-    font-weight: bold;
-  }
-}
-
 @media (min-width: 37.5625em) {
-  .stacking#lv {
+  .stacking {
     display: table;
   }
 
-  .stacking.list-view {
-    display: none;
+  .stacking td::before {
+    content: "";
   }
 }
