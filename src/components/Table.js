@@ -11,7 +11,6 @@ export const LoadCSV = async (csvFilePath) => {
   return parsedData;
 };
 
-
 export const CreateTable = (data) => {
   const headers = Object.keys(data[0]);
   const table = document.createElement('table');
@@ -49,18 +48,27 @@ const handleSort = (column, data, table) => {
   });
 
   if (sortConfig.key === column) {
-    sortConfig.direction = sortConfig.direction === 'ascending' ? 'descending' : 'ascending';
+    sortConfig.direction =
+      sortConfig.direction === 'ascending' ? 'descending' : 'ascending';
   } else {
     sortConfig.key = column;
     sortConfig.direction = 'ascending';
   }
 
   const sortedData = [...data].sort((a, b) => {
-    const aText = a[column];
-    const bText = b[column];
-    if (aText < bText) return sortConfig.direction === 'ascending' ? -1 : 1;
-    if (aText > bText) return sortConfig.direction === 'ascending' ? 1 : -1;
-    return 0;
+    const aValue = a[column];
+    const bValue = b[column];
+
+    const aNum = parseFloat(aValue);
+    const bNum = parseFloat(bValue);
+
+    if (!isNaN(aNum) && !isNaN(bNum)) {
+      return sortConfig.direction === 'ascending' ? aNum - bNum : bNum - aNum;
+    } else {
+      if (aValue < bValue) return sortConfig.direction === 'ascending' ? -1 : 1;
+      if (aValue > bValue) return sortConfig.direction === 'ascending' ? 1 : -1;
+      return 0;
+    }
   });
 
   headers.forEach((header) => {
@@ -75,6 +83,7 @@ const handleSort = (column, data, table) => {
 
   CreateTable(sortedData);
 };
+
 const getLastRenderedTable = () => {
   return document.querySelector('#table-container table');
 };
