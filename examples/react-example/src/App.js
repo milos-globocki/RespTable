@@ -1,9 +1,9 @@
 import React, {useState, useEffect } from 'react';
-import { LoadCSV, CreateTable, ApplyStacking, RenderTable, ApplyFlipping } from '../src/compiled-files-here/index.esm';
-import './compiled-files-here/index.esm.css';
+import { LoadCSV, CreateTable, ApplyStacking, RenderTable, ApplyFlipping } from '../src/respTable/index.esm';
+import './respTable/index.esm.css';
 
 // Stacking Example:
-/* const App = () => {
+const App = () => {
   useEffect(() => {
     const initializeTable = async () => {
       const csvData = await LoadCSV('/cereals.csv');
@@ -20,10 +20,11 @@ import './compiled-files-here/index.esm.css';
       <div id="table-container"></div>
     </div>
   );
-};  */
+};
 
 // Flipping Example:
-const App = () => {
+
+/*const App = () => {
   const [isFlipped, setIsFlipped] = useState(false); 
   const [csvData, setCsvData] = useState([]);
 
@@ -49,6 +50,6 @@ const App = () => {
        <div id="table-container"></div>
     </div>
   );
-};
+};*/
 
 export default App;
