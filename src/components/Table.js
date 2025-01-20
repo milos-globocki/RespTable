@@ -53,7 +53,12 @@ const initializeTable = (data) => {
   return table;
 };
 
-export const CreateTable = (data, isSearchable = true) => {
+export const CreateTable = (
+  data,
+  isSearchable = true,
+  applyStacking = true,
+  applyFlipping = false
+) => {
   const container = document.getElementById('table-container');
   container.innerHTML = '';
 
@@ -71,6 +76,10 @@ export const CreateTable = (data, isSearchable = true) => {
 
   const fullTable = initializeTable(data);
   tablePlaceholder.appendChild(fullTable);
+
+  if (applyStacking) {
+    ApplyStacking();
+  }
 
   if (isSearchable) {
     searchInput.addEventListener('input', (event) => {
@@ -91,6 +100,12 @@ export const CreateTable = (data, isSearchable = true) => {
       } else {
         const filteredTable = initializeTable(filteredData);
         tablePlaceholder.appendChild(filteredTable);
+        if (applyStacking) {
+          ApplyStacking();
+        } else if (a) {
+          ApplyFlipping(filteredData, applyFlipping);
+          // TODO: fix applyFlipping
+        }
       }
     });
   }
