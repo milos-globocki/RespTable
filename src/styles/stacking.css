@@ -41,6 +41,9 @@
     color: #2b2b2b;
     font-weight: normal;
   }
+  .responsive-table td.text {
+    text-align: right;
+  }
 }
 
 @media (min-width: 37.5625em) {
