@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RespTable: Showcase HTML with CSV</title>
+  
+  <link rel="stylesheet" href="respTable/index.esm.css">
+</head>
+<body>
+    <h1>RespTable: Showcase HTML (with CSV loading)</h1>
+    <div id="table-container"></div>
+  
+    <script type="module">
+      import { LoadCSV, CreateTable, ApplyStacking } from './respTable/index.esm.js';
+  
+      const initializeTable = async () => {
+        const csvData = await LoadCSV('./cereals.csv');       
+        CreateTable(csvData);
+        ApplyStacking();
+      };
+  
+      document.addEventListener('DOMContentLoaded', initializeTable);
+    </script>
+  </body>
+</html>
