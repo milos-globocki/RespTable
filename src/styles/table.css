@@ -21,6 +21,13 @@
   font-size: 16px;
 }
 
+.no-results {
+  text-align: center;
+  font-size: 1.2em;
+  color: #888;
+  margin-top: 20px;
+}
+
 .responsive-table tr:nth-child(odd) {
   background-color: #d4e4ec;
 }

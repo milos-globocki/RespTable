@@ -54,21 +54,20 @@ const initializeTable = (data) => {
 };
 
 export const CreateTable = (data, isSearchable = true) => {
-  document.getElementById('table-container').innerHTML = '';
-  const searchInput = document.createElement('input');
+  const container = document.getElementById('table-container');
+  container.innerHTML = '';
 
+  const searchInput = document.createElement('input');
   if (isSearchable) {
     searchInput.type = 'text';
     searchInput.placeholder = 'Search...';
     searchInput.classList.add('table-search');
-    document.getElementById('table-container').appendChild(searchInput);
-  } else {
-    searchInput.style.visibility = 'gone';
+    container.appendChild(searchInput);
   }
 
   const tablePlaceholder = document.createElement('div');
   tablePlaceholder.id = 'table-content';
-  document.getElementById('table-container').appendChild(tablePlaceholder);
+  container.appendChild(tablePlaceholder);
 
   const fullTable = initializeTable(data);
   tablePlaceholder.appendChild(fullTable);
@@ -77,12 +76,22 @@ export const CreateTable = (data, isSearchable = true) => {
     searchInput.addEventListener('input', (event) => {
       const searchTerm = event.target.value.toLowerCase();
       const filteredData = data.filter((row) =>
-        Object.values(row).some((value) => value.toLowerCase().includes(searchTerm))
+        Object.values(row).some((value) =>
+          value.toString().toLowerCase().includes(searchTerm)
+        )
       );
 
       tablePlaceholder.innerHTML = '';
-      const filteredTable = initializeTable(filteredData);
-      tablePlaceholder.appendChild(filteredTable);
+
+      if (filteredData.length === 0) {
+        const noResultsMessage = document.createElement('div');
+        noResultsMessage.classList.add('no-results');
+        noResultsMessage.textContent = 'No results found.';
+        tablePlaceholder.appendChild(noResultsMessage);
+      } else {
+        const filteredTable = initializeTable(filteredData);
+        tablePlaceholder.appendChild(filteredTable);
+      }
     });
   }
 };
@@ -118,7 +127,6 @@ const handleSort = (column, data, table) => {
     }
   });
 
-  // Update the table content
   const tableBody = table.querySelector('tbody');
   tableBody.innerHTML = '';
   sortedData.forEach((row) => {
@@ -214,6 +222,14 @@ export const ApplyFlipping = (data, isFlipped) => {
 };
 
 export const RenderTable = (table) => {
-  document.getElementById('table-container').innerHTML = '';
-  document.getElementById('table-container').appendChild(table);
+  const containers = Array.from(
+    document.getElementById('table-content').getElementsByClassName('responsive-table')
+  );
+
+  console.log(containers);
+
+  // containers.forEach((tempTable) => {
+  //   tempTable.innerHTML = '';
+  //   tempTable.appendChild(table);
+  // });
 };
