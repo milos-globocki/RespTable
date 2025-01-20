@@ -9,18 +9,31 @@
 </head>
 <body>
     <h1>RespTable: Showcase HTML (with CSV loading)</h1>
+    
+    <!-- Flipping and Stacking Example -->
+    <button id="flip-button">Flip Table</button>
     <div id="table-container"></div>
-  
+    <script src="../src/respTable/index.esm.js"></script>
     <script type="module">
-      import { LoadCSV, CreateTable, ApplyStacking } from './respTable/index.esm.js';
+      import { LoadCSV, CreateTable, ApplyFlipping, ApplyStacking } from './respTable/index.esm.js';
+  
+      let isFlipped = false;
   
       const initializeTable = async () => {
-        const csvData = await LoadCSV('./cereals.csv');       
+        const csvData = await LoadCSV('./cereals.csv');
         CreateTable(csvData);
         ApplyStacking();
+  
+        const flipButton = document.getElementById('flip-button');
+        flipButton.addEventListener('click', () => {
+          isFlipped = !isFlipped;
+          ApplyFlipping(csvData, isFlipped);
+          ApplyStacking();
+        });
       };
   
       document.addEventListener('DOMContentLoaded', initializeTable);
     </script>
+
   </body>
 </html>
