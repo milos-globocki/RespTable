@@ -23,20 +23,29 @@ Here's an overview of the folder structure and purpose of each directory:
   - **`rollup.config.js`**: Configuration for the Rollup bundler used to build the library.
 
 ## Getting Started
-Make sure you have `gulp` installed (is automatically installed with `npm install`). 
+Make sure you have `gulp` installed:
 
-Available Gulp tasks:
+```
+npm install --global gulp-cli
+```
+
+Install all dependencies:
+```
+npm install
+```
+
+Now follwowing gulp commands can be used:
 - Install/building:
-    - gulp install: Install all missing npm dependencies.
-    - gulp build-lib: Build the library.
+    - `gulp install`: Install all missing npm dependencies.
+    - `gulp build-lib`: Build the library.
 - Whole pipeline for html | html-csv | react:
-    - gulp html: Install, build, and start the HTML example.
-    - gulp html-csv: Install, build, and start the HTML example with CSV.
-    - gulp react: Install, build, and start the React example.
+    - `gulp html`: Install, build, and start the HTML example.
+    - `gulp html-csv`: Install, build, and start the HTML example with CSV.
+    - `gulp react`: Install, build, and start the React example.
 - Start an example (if library already built):
-    - gulp start-html-example: Only start the HTML example.
-    - gulp start-html-csv-example: Only start the HTML example with CSV.
-    - gulp start-react-example: Only start the React example.
+    - `gulp start-html-example`: Only start the HTML example.
+    - `gulp start-html-csv-example`: Only start the HTML example with CSV.
+    - `gulp start-react-example`: Only start the React example.
 
 ## Library Usage Workflow
 See `examples/README.md`.
