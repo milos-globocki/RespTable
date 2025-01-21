@@ -48,7 +48,8 @@ Now follwowing gulp commands can be used:
     - `gulp start-react-example`: Only start the React example.
 
 ## Library Usage Workflow
-See `examples/README.md`.
+See [`examples/README.md`](https://github.com/milos-globocki/RespTable/blob/main/examples/README.md).
+
 
 ## Developer Workflow
 See `src/README.md`.
