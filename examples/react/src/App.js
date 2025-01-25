@@ -4,8 +4,8 @@ import {
   CreateTable,
   ApplyStacking,
   ApplyFlipping,
-} from '../src/respTable/index.esm';
-import './respTable/index.esm.css';
+} from '../src/respTable/RespTable.js';
+import './respTable/RespTable.css';
 
 // Stacking Example:
 const App = () => {

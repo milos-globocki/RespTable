@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const fs = require('fs');
 const path = require('path');
 const { exec } = require('child_process');
+const headerComment = require('gulp-header-comment');
 
 const htmlPath = 'examples/html'
 const htmlCsvPath = 'examples/html-with-csv'
@@ -62,17 +63,20 @@ gulp.task('check-folder-react', (done) => {
 });
 
 gulp.task('copy-files-html', () => {
-  return gulp.src(['dist/esm/index.esm.js', 'dist/esm/index.esm.css'])
+  return gulp.src('dist/esm/RespTable.css')
+    .pipe(headerComment('RespTable Open Source Library'))
     .pipe(gulp.dest(htmlPath + '/respTable'));
 });
 
 gulp.task('copy-files-html-csv', () => {
-  return gulp.src('dist/esm/index.esm.css')
+  return gulp.src(['dist/esm/RespTable.js','dist/esm/RespTable.css'])
+    .pipe(headerComment('RespTable Open Source Library'))
     .pipe(gulp.dest(htmlCsvPath + '/respTable'));
 });
 
 gulp.task('copy-files-react', () => {
   return gulp.src('dist/esm/*')
+    .pipe(headerComment('RespTable Open Source Library'))
     .pipe(gulp.dest(reactPath + '/respTable'));
 });
 

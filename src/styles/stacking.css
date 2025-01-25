@@ -1,6 +1,7 @@
 @media (max-width: 37.5em) {
   .stacking {
     font-size: 0.875em;
+    margin-left: 5em;
   }
 
   .stacking thead {

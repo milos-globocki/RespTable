@@ -8,12 +8,12 @@ export default {
   input: 'src/index.js',
   output: [
     {
-      file: 'dist/cjs/index.cjs.js',
+      file: 'dist/cjs/RespTable.js',
       format: 'cjs',
       sourcemap: true,
     },
     {
-      file: 'dist/esm/index.esm.js',
+      file: 'dist/esm/RespTable.js',
       format: 'esm',
       sourcemap: true,
     },
