@@ -20,7 +20,7 @@
   }
 
   .stacking td {
-    text-align: left;
+    text-align: right;
     padding-left: 10%;
     position: relative;
     white-space: nowrap;

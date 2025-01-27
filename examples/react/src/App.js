@@ -8,7 +8,7 @@ import {
 import './respTable/RespTable.css';
 
 // Stacking Example:
-const App = () => {
+/*const App = () => {
   useEffect(() => {
     const initializeTable = async () => {
       const csvData = await LoadCSV('/cereals.csv');
@@ -25,11 +25,11 @@ const App = () => {
       <div id="table-container"></div>
     </div>
   );
-};
+};*/
 
 // Flipping Example:
 
-/*const App = () => {
+const App = () => {
   const [isFlipped, setIsFlipped] = useState(false); 
   const [csvData, setCsvData] = useState([]);
 
@@ -37,7 +37,7 @@ const App = () => {
     const initializeTable = async () => {
       const data = await LoadCSV('/cereals.csv');
       setCsvData(data);
-      CreateTable(data);
+      CreateTable(data, true, true, true);
     };
 
     initializeTable();
@@ -55,6 +55,6 @@ const App = () => {
        <div id="table-container"></div>
     </div>
   );
-};*/
+};
 
 export default App;

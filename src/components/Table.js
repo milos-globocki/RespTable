@@ -4,6 +4,10 @@ import { csvParse } from 'd3-dsv';
 
 let sortConfig = { key: null, direction: 'ascending' };
 
+let stacking = false;
+let flipping = false;
+let data_ = 0;
+
 export const LoadCSV = async (csvFilePath) => {
   const response = await fetch(csvFilePath);
   const csvText = await response.text();
@@ -60,6 +64,13 @@ export const CreateTable = (
   applyStacking = true,
   applyFlipping = false
 ) => {
+
+  if(applyStacking) stacking = true;
+  else stacking = false;
+  if(applyFlipping) flipping = true;
+  else flipping = false;
+  data_ = data;
+
   const container = document.getElementById('table-container');
   container.innerHTML = '';
 
@@ -177,8 +188,9 @@ export const ApplyStacking = () => {
     const cells = row.querySelectorAll('td');
 
     cells.forEach((cell, index) => {
-      const headerText = headers[index].textContent.trim();
-      cell.setAttribute('data-label', headerText);
+      const headerText =
+      headers.length > index ? headers[index].textContent.trim() : 'Unknown';
+    cell.setAttribute('data-label', headerText);
     });
   });
   RenderTable(table);
@@ -186,22 +198,31 @@ export const ApplyStacking = () => {
 
 export const ApplyFlipping = (data, isFlipped) => {
   if (!data || data.length === 0) return null;
+  const isStacking = window.innerWidth <= 600;
+  const tableContainer = document.getElementById('table-content');
   const columns = Object.keys(data[0]);
 
   let flippedData;
-  if (isFlipped) {
+
+  if (isStacking) {
+    flippedData = data;
+    isFlipped = false;
+  } else   if (isFlipped) {
     flippedData = columns.map((col) => [col, ...data.map((row) => row[col])]);
   } else {
     flippedData = data.map((row) => columns.map((col) => row[col]));
   }
 
+  tableContainer.innerHTML = '';
+
   const table = document.createElement('table');
   table.classList.add('responsive-table');
+  if (isStacking) table.classList.add('stacking');
 
   const thead = document.createElement('thead');
   const headerRow = document.createElement('tr');
 
-  if (isFlipped) {
+  if (isFlipped && !isStacking) {
     flippedData[0].forEach((header) => {
       const th = document.createElement('th');
       th.textContent = header;
@@ -219,23 +240,46 @@ export const ApplyFlipping = (data, isFlipped) => {
   table.appendChild(thead);
 
   const tbody = document.createElement('tbody');
-  const rowData = isFlipped
-    ? flippedData.slice(1)
-    : data.map((row) => columns.map((col) => row[col]));
 
-  rowData.forEach((row) => {
-    const tr = document.createElement('tr');
-    row.forEach((cell) => {
-      const td = document.createElement('td');
-      td.textContent = cell;
-      tr.appendChild(td);
+  if (isFlipped && !isStacking) {
+    flippedData.slice(1).forEach((columnRow) => {
+      const tr = document.createElement('tr');
+
+      columnRow.forEach((cell) => {
+        const td = document.createElement('td');
+        td.textContent = cell;
+        td.classList.add(isNaN(cell) && cell !== '/' ? 'text' : 'numeric');
+        tr.appendChild(td);
+      });
+
+      tbody.appendChild(tr);
     });
-    tbody.appendChild(tr);
-  });
+  } else {
+    data.forEach((row) => {
+      const tr = document.createElement('tr');
+
+      columns.forEach((col) => {
+        const td = document.createElement('td');
+        td.textContent = row[col];
+        td.classList.add(isNaN(row[col]) && row[col] !== '/' ? 'text' : 'numeric');
+        td.setAttribute('data-label', col);
+        tr.appendChild(td);
+      });
+
+      tbody.appendChild(tr);
+    });
+  }
 
   table.appendChild(tbody);
-  RenderTable(table);
+  tableContainer.appendChild(table);
 };
+
+window.addEventListener('resize', () => {
+  // Check if stacking or flipping needs to be reapplied
+  const isStacking = window.innerWidth <= 600;
+  ApplyFlipping(data_, flipping); // Use the current flipping state
+});
+
 
 export const RenderTable = (table) => {
   const containers = Array.from(
