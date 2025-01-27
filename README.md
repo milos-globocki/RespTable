@@ -38,7 +38,7 @@ Now follwowing gulp commands can be used:
 - Install/building:
     - `gulp install`: Install all missing npm dependencies.
     - `gulp build-lib`: Build the library.
-- Whole pipeline for html | html-csv | react:
+- Whole pipeline for html / html-csv / react:
     - `gulp html`: Install, build, and start the HTML example.
     - `gulp html-csv`: Install, build, and start the HTML example with CSV.
     - `gulp react`: Install, build, and start the React example.
