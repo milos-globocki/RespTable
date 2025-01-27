@@ -30,12 +30,12 @@ import './respTable/RespTable.css';
 // Flipping Example:
 
 const App = () => {
-  const [isFlipped, setIsFlipped] = useState(false); 
+  const [isFlipped, setIsFlipped] = useState(false);
   const [csvData, setCsvData] = useState([]);
 
   useEffect(() => {
     const initializeTable = async () => {
-      const data = await LoadCSV('/cereals.csv');
+      const data = await LoadCSV(`${process.env.PUBLIC_URL}/cereals.csv`);
       setCsvData(data);
       CreateTable(data, true, true, true);
     };
@@ -52,7 +52,7 @@ const App = () => {
     <div>
       <h1>RespTable: Showcase</h1>
       <button onClick={handleFlip}>Flip Table</button> {}
-       <div id="table-container"></div>
+      <div id="table-container"></div>
     </div>
   );
 };
