@@ -52,6 +52,6 @@ See [`examples/README.md`](https://github.com/milos-globocki/RespTable/blob/main
 
 
 ## Developer Workflow
-See `src/README.md`.
+See [`src/README.md`](https://github.com/milos-globocki/RespTable/blob/main/src/README.md).
 
 
