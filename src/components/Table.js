@@ -116,7 +116,6 @@ export const CreateTable = (
           ApplyStacking();
         } else if (a) {
           ApplyFlipping(filteredData, applyFlipping);
-          // TODO: fix applyFlipping
         }
       }
     });
@@ -161,8 +160,10 @@ const handleSort = (column, data, table) => {
     Object.values(row).forEach((cell) => {
       const td = document.createElement('td');
       td.textContent = cell;
+      td.classList.add(isNaN(cell) && cell !== '/' ? 'text' : 'numeric');
       tr.appendChild(td);
     });
+
     tableBody.appendChild(tr);
   });
 
@@ -173,6 +174,8 @@ const handleSort = (column, data, table) => {
       );
     }
   });
+
+  
 };
 const getLastRenderedTable = () => {
   return document.querySelector('#table-container table');
