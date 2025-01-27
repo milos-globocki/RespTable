@@ -22,13 +22,13 @@
       const initializeTable = async () => {
         const csvData = await LoadCSV('./cereals.csv');
         CreateTable(csvData);
-        ApplyStacking();
+        // ApplyStacking();
   
         const flipButton = document.getElementById('flip-button');
         flipButton.addEventListener('click', () => {
           isFlipped = !isFlipped;
           ApplyFlipping(csvData, isFlipped);
-          ApplyStacking();
+          // ApplyStacking();
         });
       };
   

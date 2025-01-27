@@ -42,9 +42,10 @@ const initializeTable = (data) => {
     Object.values(row).forEach((cell) => {
       const td = document.createElement('td');
       td.textContent = cell;
-      td.classList.add(isNaN(cell) ? 'text' : 'numeric');
+      td.classList.add(isNaN(cell) && cell !== '/' ? 'text' : 'numeric');
       tr.appendChild(td);
     });
+
     tbody.appendChild(tr);
   });
 
