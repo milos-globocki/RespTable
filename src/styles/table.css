@@ -49,6 +49,16 @@
   z-index: 1;
   border-width: 0.0625em;
   cursor: pointer;
+  position: relative;
+  padding-right: 1.3em;
+}
+
+.responsive-table th::after {
+  content: '';
+  position: absolute;
+  right: 0.3125em;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .responsive-table th.sorted-ascending::after {
