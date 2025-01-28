@@ -47,7 +47,7 @@ Now follwowing gulp commands can be used:
     - `gulp start-html-csv-example`: Only start the HTML example with CSV.
     - `gulp start-react-example`: Only start the React example.
 
-## Library Usage Workflow
+## Library Usage Workflow and Demos
 See [`examples/README.md`](https://github.com/milos-globocki/RespTable/blob/main/examples/README.md).
 
 
