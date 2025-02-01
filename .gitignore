@@ -10,7 +10,6 @@ package-lock.json
 # production
 /build
 /dist
-/examples/react/src/respTable/*
 
 # misc
 .DS_Store

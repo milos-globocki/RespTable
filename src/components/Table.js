@@ -60,7 +60,7 @@ const initializeTable = (data) => {
 
 export const CreateTable = (
   data,
-  isSearchable = true,
+  isFilterable = true,
   applyStacking = true,
   applyFlipping = false
 ) => {
@@ -74,12 +74,12 @@ export const CreateTable = (
   const container = document.getElementById('table-container');
   container.innerHTML = '';
 
-  const searchInput = document.createElement('input');
-  if (isSearchable) {
-    searchInput.type = 'text';
-    searchInput.placeholder = 'Search...';
-    searchInput.classList.add('table-search');
-    container.appendChild(searchInput);
+  const filterInput = document.createElement('input');
+  if (isFilterable) {
+    filterInput.type = 'text';
+    filterInput.placeholder = 'Filter...';
+    filterInput.classList.add('table-filter');
+    container.appendChild(filterInput);
   }
 
   const tablePlaceholder = document.createElement('div');
@@ -93,12 +93,12 @@ export const CreateTable = (
     ApplyStacking();
   }
 
-  if (isSearchable) {
-    searchInput.addEventListener('input', (event) => {
-      const searchTerm = event.target.value.toLowerCase();
+  if (isFilterable) {
+    filterInput.addEventListener('input', (event) => {
+      const filterTerm = event.target.value.toLowerCase();
       const filteredData = data.filter((row) =>
         Object.values(row).some((value) =>
-          value.toString().toLowerCase().includes(searchTerm)
+          value.toString().toLowerCase().includes(filterTerm)
         )
       );
 
