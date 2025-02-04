@@ -37,7 +37,7 @@ const App = () => {
     const initializeTable = async () => {
       const data = await LoadCSV(`${process.env.PUBLIC_URL}/cereals.csv`);
       setCsvData(data);
-      CreateTable(data, true, true, true);
+      CreateTable(data, true, true);
     };
 
     initializeTable();
@@ -50,9 +50,23 @@ const App = () => {
 
   return (
     <div>
-      <h1>RespTable: Showcase</h1>
-      <button onClick={handleFlip}>Flip Table</button> {}
+      <h1 style={{ margin: '20px' }}>RespTable: Showcase</h1>
+      <button
+        onClick={handleFlip}
+        style={{ margin: '20px', padding: '8px', fontSize: '16px' }}
+        className="hide-on-mobile"
+      >
+        Flip Table
+      </button>
       <div id="table-container"></div>
+
+      <style>{`
+        @media (max-width: 40em) {
+          .hide-on-mobile {
+            display: none;
+          }
+        }
+      `}</style>
     </div>
   );
 };

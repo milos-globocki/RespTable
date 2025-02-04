@@ -8,32 +8,47 @@
   <link rel="stylesheet" href="respTable/RespTable.css">
 </head>
 <body>
-    <h1>RespTable: Showcase HTML (with CSV loading)</h1>
-    
-    <!-- Flipping and Stacking Example -->
-    <button id="flip-button">Flip Table</button>
-    <div id="table-container"></div>
-    <script src="../src/respTable/RespTable.js"></script>
-    <script type="module">
-      import { LoadCSV, CreateTable, ApplyFlipping, ApplyStacking } from './respTable/RespTable.js';
+  <h1>RespTable: Showcase HTML (with CSV loading)</h1>
   
-      let isFlipped = false;
-  
-      const initializeTable = async () => {
-        const csvData = await LoadCSV('./cereals.csv');
-        CreateTable(csvData);
-        ApplyStacking();
-  
-        const flipButton = document.getElementById('flip-button');
-        flipButton.addEventListener('click', () => {
-          isFlipped = !isFlipped;
-          ApplyFlipping(csvData, isFlipped);
-          // ApplyStacking();
-        });
-      };
-  
-      document.addEventListener('DOMContentLoaded', initializeTable);
-    </script>
+  <!-- Flipping and Stacking Example -->
+  <button id="flip-button">Flip Table</button>
+  <div id="table-container"></div>
 
-  </body>
+  <style>
+      @media (max-width: 40em) {
+          #flip-button {
+              display: none;
+          }
+      }
+
+      #flip-button {
+          margin: 20px;
+          padding: 8px;
+          font-size: 16px;
+          cursor: pointer;
+      }
+  </style>
+
+  <script src="../src/respTable/RespTable.js"></script>
+  <script type="module">
+    import { LoadCSV, CreateTable, ApplyFlipping, ApplyStacking } from './respTable/RespTable.js';
+
+    let isFlipped = false;
+
+    const initializeTable = async () => {
+      const csvData = await LoadCSV('./cereals.csv');
+      CreateTable(csvData);
+      ApplyStacking();
+
+      const flipButton = document.getElementById('flip-button');
+      flipButton.addEventListener('click', () => {
+        isFlipped = !isFlipped;
+        ApplyFlipping(csvData, isFlipped);
+        // ApplyStacking();
+      });
+    };
+
+    document.addEventListener('DOMContentLoaded', initializeTable);
+  </script>
+</body>
 </html>

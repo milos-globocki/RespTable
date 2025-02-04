@@ -16,7 +16,7 @@
   background-color: #f4f4f4;
 }
 
-@media (max-width: 37.5em) {
+@media (max-width: 40em) {
   .squishing {
     display: block;
     overflow-x: auto;
