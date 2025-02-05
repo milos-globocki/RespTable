@@ -7,7 +7,7 @@ import {
 } from '../src/respTable/RespTable.js';
 import './respTable/RespTable.css';
 
-// Stacking Example:
+// Stacking only Example:
 /*const App = () => {
   useEffect(() => {
     const initializeTable = async () => {
@@ -21,14 +21,13 @@ import './respTable/RespTable.css';
 
   return (
     <div>
-      <h1>RespTable: Showcase</h1>
+      <h1>RespTable: Showcase React Example (with CSV loading and Stacking)</h1>
       <div id="table-container"></div>
     </div>
   );
 };*/
 
-// Flipping Example:
-
+// Flipping and Stacking Example:
 const App = () => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [csvData, setCsvData] = useState([]);
@@ -50,10 +49,10 @@ const App = () => {
 
   return (
     <div>
-      <h1 style={{ margin: '20px' }}>RespTable: Showcase</h1>
+      <h1 style={{ margin: '1.25em' }}>RespTable: Showcase React Example (with CSV loading, Stacking, and Flipping)</h1>
       <button
         onClick={handleFlip}
-        style={{ margin: '20px', padding: '8px', fontSize: '16px' }}
+        style={{ margin: '1.25em', padding: '0.5em', fontSize: '1em' }}
         className="hide-on-mobile"
       >
         Flip Table
